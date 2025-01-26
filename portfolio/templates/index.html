@@ -1,148 +1,653 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ name }} - Portfolio</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7f6;
-            padding-top: 50px;
-            color: #333;
-        }
-        .container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 3.5rem;
-            color: #5c6bc0;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-        .project-card {
-            margin-bottom: 30px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
-        }
-        .card-title {
-            font-size: 1.6rem;
-            color: #5c6bc0;
-            font-weight: bold;
-        }
-        .card-text {
-            font-size: 1.1rem;
-            color: #777;
-        }
-        .card-img-top {
-            height: 250px;
-            object-fit: cover;
-        }
-        .skills-list, .contact-links {
-            font-size: 1.2rem;
-            color: #555;
-        }
-        .skills-list li, .contact-links li {
-            margin-bottom: 12px;
-        }
-        .skills-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .contact-links a {
-            color: #5c6bc0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .contact-links a:hover {
-            color: #1d2f7f;
-        }
-        .btn-custom {
-            background-color: #5c6bc0;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-        }
-        .btn-custom:hover {
-            background-color: #3f4f89;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #aaa;
-        }
-        .footer p {
-            margin: 10px;
-        }
-        .footer a {
-            color: #5c6bc0;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            color: #1d2f7f;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--- not added-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhishek_Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <!-- <link rel="shortcut icon" href="../static/images/logo.ico" type="image/x-icon"> -->
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="../static/css/index.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: rgb(145, 145, 145);">
+  <main>
 
-    <div class="container">
-        <h1 class="text-center">{{ name }}'s Portfolio</h1>
+    <!--
+      - #SIDEBAR
+    -->
 
-        <!-- Projects Section -->
-        <div class="row">
-            {% for project in projects %}
-                <div class="col-md-4">
-                    <div class="card project-card">
-                        <img src="{{ url_for('static', filename='images/' + project.image) }}" class="card-img-top" alt="{{ project.title }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ project.title }}</h5>
-                            <p class="card-text">{{ project.description }}</p>
-                            <a href="#" class="btn-custom">View Project</a>
-                        </div>
-                    </div>
+    <aside class="sidebar" data-sidebar style="background-color:rgb(0, 0, 0);">
+
+      <div class="sidebar-info">
+
+        <div class="avatar-box">
+          <img src="../static/images/my_img.png" alt="Abhishek Binish" onclick="viewFullscreen(this.src)" width="80" style="border-radius: 20px; ">
+        </div>
+
+        <div class="info-content">
+          <h1 class="name" title="Abhishek Binish">ALTHAF NAVAS</h1>
+
+          <p class="title">Web Developer</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-button id="present-alert">Show More</ion-button>
+          
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <img src="../static/images/email (3).png" alt="" width="40">
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:abhishekbinish86@gmail.com" class="contact-link">nalthaf13@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <img src="../static/images/phone.png" alt="" width="40" style="background-color: white;border-radius: 10px;">
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+919744642436" class="contact-link">+91 7994844249</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <img src="../static/images/schedule.png" alt="" width="40">
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="2003-09-30">02 mar, 2005</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <img src="../static/images/map.png" alt="" width="40">
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Kerala, India</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <!-- <li class="social-item">
+            <a href="wa.link/bixd7d" class="social-link">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+          </li> -->
+  
+          <li class="social-item">
+            <a href="https://github.com/Althafnavas4" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/abhishek-binish-913b37237?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/__a12_thaf__/" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://wa.me/+7994844249?text=Hello%2C%20I%20want%20to%20connect%20with%20you%21" class="social-link">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+      <!-- </div> -->
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about" style="background-color: black;">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm a passionate and dedicated web developer with expertise in designing and developing responsive, 
+            user-friendly websites and applications.
+          </p>
+
+          <p>
+            I'm always eager to learn new tools and technologies, bringing a problem-solving mindset and a passion for 
+              coding to every project. My goal is to deliver high-quality, user-centric solutions that align with modern 
+              development standards.
+          </p>
+
+        </section>
+
+
+<!-- ------------------------what im doing----------------------------- -->
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="../static/images/app.png" alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web Design</h4>
+
+                <p class="service-item-text">
+                  The most modern and high-quality design made at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="../static/images/app-development.png" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web Development</h4>
+
+                <p class="service-item-text">
+                  High-quality development of Web applications at the professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="../static/images/api.png" alt="api icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">REST API</h4>
+
+                <p class="service-item-text">
+                  Delivering high-quality API development with a focus on performance and scalability using Django REST Framework (DRF)
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="../static/images/hosting.png" alt="Web hosting icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web Hosting</h4>
+
+                <p class="service-item-text">
+                  Delivering secure and efficient web hosting services for seamless online presence.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+
+        <!--
+          - testimonials modal
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </section>
+
+        </div>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume"  style="background-color: black; height: 100%;">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+        <!-- style="width: 428px;object-fit:fill; margin: auto;" -->
+
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <img src="../static/images/book.png" alt="education" width="40">
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Web Development using Python</h4>
+              <p class="service-item-text" style="color: gray;">Synnefo Solutions   [Ernakulam, Kerala]</p>
+              <span>2024 — 2025</span>
+
+              <p class="timeline-text">
+                Completed a web development course, including an internship, where I gained practical 
+                experience in building websites and web applications.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Digital Marketing (Add-on)</h4>
+              <p class="service-item-text" style="color: gray;">MG University / Mar Augustinose College   [Ramapuram, Kerala]</p>
+              <span>2023 — 2024</span>
+
+              <p class="timeline-text">
+                Covered SEO, social media marketing, and digital advertising strategies.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Bachelor of Computer Applications (BCA)</h4>
+              <p class="service-item-text" style="color: gray;">MG University / Mar Augustinose College   [Ramapuram, Kerala]</p>
+              <span>2021 — 2024</span>
+
+              <p class="timeline-text">
+                Completed a Bachelor of Computer Applications, gaining a strong foundation 
+                in programming, web development, and database management.
+              </p>
+
+            </li>
+
+
+</ol>
+<div class="button-container">
+  <button class="pdf-button" onclick="openPDF()">
+      Open Resume
+  </button>
+</div>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio"  style="background-color: black;">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <!-- <div class="select-value" data-selecct-value>Select category</div> -->
+
+              <!-- <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div> -->
+
+            </button>
+
+  
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="http://AbhisheksHMS.pythonanywhere.com">
+
+                <div class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="../static/images/appointment.png" alt="HMS" loading="lazy">
                 </div>
-            {% endfor %}
-        </div>
 
-        <!-- Skills Section -->
-        <h2 class="mt-5">Skills</h2>
-        <ul class="skills-list">
-            {% for skill in skills %}
-                <li>{{ skill }}</li>
-            {% endfor %}
-        </ul>
+                <h3 class="project-title">MediCare</h3>
 
-        <!-- Contact Section -->
-        <h2 class="mt-5">Contact</h2>
-        <ul class="contact-links">
-            <li>Email: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
-            <li>LinkedIn: <a href="{{ contact.linkedin }}" target="_blank">View my LinkedIn</a></li>
-            <li>GitHub: <a href="{{ contact.github }}" target="_blank">View my GitHub</a></li>
-        </ul>
+                <p class="project-category">Hospital Management System</p>
 
-        <!-- Footer Section -->
-        <div class="footer">
-            <p>&copy; {{ year }} {{ name }}. All rights reserved. <br> <a href="/about">About Me</a></p>
-        </div>
+              </a>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="http://AbhishekDev.pythonanywhere.com">
+
+                <div class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="../static/images/perfume_nest.jpg" alt="finance" loading="lazy">
+                </div>
+
+                <h3 class="project-title">Perfume Nest</h3>
+
+                <p class="project-category">E-commerce</p>
+
+              </a>
+            </li>
+
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://ittirarichan.github.io/croma/">
+
+                <div class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="../static/images/croma clone.png" alt="croma_clone" loading="lazy" style="height: auto;">
+                </div><br>
+
+                <h3 class="project-title">Croma</h3>
+
+                <p class="project-category">Index clone</p>
+
+              </a>
+            </li>
+
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://ittirarichan.github.io/the_odin_project/">
+
+                <div class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="../static/images/theodinproject.png" alt="theodinproject" loading="lazy">
+                </div><br>
+
+                <h3 class="project-title">The Odin Project</h3>
+
+                <p class="project-category">Clone</p>
+
+              </a>
+            </li>
+
+
+
+
+
+            <!-- <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="#">
+
+                <div class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="../static/images/chempakam clone.png" alt="brawlhalla" loading="lazy">
+                </div>
+
+                <h3 class="project-title">Chempakam</h3>
+
+                <p class="project-category">Index Clone</p>
+
+              </a>
+            </li> -->
+
+            <!-- <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <div class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="../static/images/project-5.png" alt="dsm." loading="lazy">
+                </div>
+
+                <h3 class="project-title">DSM.</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <div class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="../static/images/project-6.png" alt="metaspark" loading="lazy">
+                </div>
+
+                <h3 class="project-title">MetaSpark</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li> -->
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+     
+
+
+
+
+<!-- --------------------------------------------Contact page starting from here---------------------------------------------------------- -->
+
+      <article class="contact" data-page="contact"  style="background-color: black;">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header><br><br><br><br>
+
+        <!-- <section class="mapbox" data-mapbox>
+          <div>
+            <iframe
+              src="https://www.google.com/maps/@9.8488688,76.6791308,13.38z?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+              width="400" height="300" loading="lazy"></iframe>
+          </div>
+        </section> -->
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Let's get in touch</h3>
+
+          <form action="#" class="form" data-form method="post">
+
+            <div class="input-wrapper">
+              <input type="text" name="name" class="form-input" placeholder="Full name" required >
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required >
+            </div>
+
+            <input type="text" name="number" class="form-input" placeholder="Phone" required > <br>
+            
+            <textarea name="message" class="form-input" placeholder="Your Message" required ></textarea>
+
+            <button class="form-btn" type="submit">
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+<!-- --------------------------------------------Contact page ending here---------------------------------------------------------- -->
+
+
     </div>
 
-    <!-- JS Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </main>
+
+
+
+  <div id="fullscreen-image" onclick="closeFullscreen()">
+    <span>&times;</span>
+    <img src="../static/images/my_img.png" alt="Fullscreen View">
+  </div>
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="../static/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
+
 </html>
