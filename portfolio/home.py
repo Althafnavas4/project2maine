@@ -9,8 +9,8 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'abhishekbinish86@gmail.com'  # Your email address
-app.config['MAIL_PASSWORD'] = 'xewq osgl gtnw sinz'  # Your email password
+app.config['MAIL_USERNAME'] = 'nalthaf132@gmail.com'  # Your email address
+app.config['MAIL_PASSWORD'] = 'qkxemdhpbcoszkbu'  # Your email password
 app.config['MAIL_DEFAULT_SENDER'] = 'nalthaf13@gmail.com'
 
 mail = Mail(app)
@@ -44,7 +44,7 @@ def fun2():
         # Send email
         msg = Message(
             subject='Connect through Portfolio',
-            recipients=['abhishekbinish86@gmail.com'],  # Change to your recipient email
+            recipients=['nalthaf13@gmail.com.com'],  # Change to your recipient email
             body=f"""
             Connect through Portfolio:
             Name: {name}

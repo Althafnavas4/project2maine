@@ -88,7 +88,7 @@ navigationLinks.forEach((link) => {
 
 // Resume PDF functionality
 function openPDF() {
-  const pdfUrl = '../static/images/ABHISHEK_BINISH_CV.pdf'; // Replace with your PDF file path
+  const pdfUrl = '../static/images/althafcv.pdf'; // Replace with your PDF file path
   window.open(pdfUrl, '_blank');
 }
 
