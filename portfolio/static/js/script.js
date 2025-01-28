@@ -6,6 +6,7 @@ const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 sidebarBtn.addEventListener("click", () => sidebar.classList.toggle("active"));
 
+
 // Modal functionality for testimonials
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
 const modalContainer = document.querySelector("[data-modal-container]");
@@ -37,6 +38,8 @@ testimonialsItem.forEach((item) => {
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
 overlay.addEventListener("click", testimonialsModalFunc);
 
+
+
 // Custom select functionality (no filtering)
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
@@ -52,6 +55,7 @@ selectItems.forEach((item) => {
   });
 });
 
+
 // Contact form validation
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
@@ -64,6 +68,8 @@ formInputs.forEach((input) => {
       : formBtn.setAttribute("disabled", "");
   });
 });
+
+
 
 // Page navigation functionality
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
@@ -86,6 +92,7 @@ navigationLinks.forEach((link) => {
   });
 });
 
+
 // Resume PDF functionality
 function openPDF() {
   const pdfUrl = '../static/images/althafcv.pdf'; // Replace with your PDF file path
@@ -94,8 +101,7 @@ function openPDF() {
 
 
 
-
-
+// Fullscreen image view
 function viewFullscreen(src) {
   const fullscreenDiv = document.getElementById('fullscreen-image');
   const fullscreenImg = fullscreenDiv.querySelector('img');
