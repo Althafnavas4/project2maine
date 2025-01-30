@@ -3,89 +3,353 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--- not added-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALTHAF NAVAS_Portfolio</title>
-
-  <!-- favicon -->
-  <!-- <link rel="shortcut icon" href="../static/images/logo.ico" type="image/x-icon"> -->
-
-  <!-- custom css link -->
-  <link rel="stylesheet" href="../static/css/index.css">
-
-  <!-- google font link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>ALTHAF NAVAS Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons.css" rel="stylesheet"> <!-- Add this link for icons -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff; /* Light blue background */
+      margin: 0;
+      padding: 0;
+    }
+  
+    /* Navbar Styles */
+    .navbar {
+      background-color: #005f6a; /* Dark Teal */
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    .navbar-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .navbar-list li {
+      display: inline;
+      margin-right: 20px;
+    }
+  
+    .navbar-list a {
+      color: #eaf2f8; /* Light gray-blue */
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      padding: 8px 15px;
+      border-radius: 4px;
+    }
+  
+    .navbar-list a:hover {
+      color: #ff6f61; /* Coral color */
+      background-color: rgba(255, 111, 97, 0.1);
+    }
+  
+    /* Container */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    /* Main Content */
+    .main-content {
+      flex: 3;
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      transition: box-shadow 0.3s ease;
+    }
+  
+    .main-content:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    .intro h1 {
+      color: #005f6a; /* Dark Teal */
+      font-size: 3em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+  
+    .intro p {
+      color: #333333; /* Dark gray */
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+  
+    /* Skills Section */
+    .skills ul {
+      list-style-type: none;
+      padding: 0;
+      color: #333333;
+    }
+  
+    .skills ul li {
+      margin: 12px 0;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+    }
+  
+    .skills ul li::before {
+      content: '✓';
+      color: #28a745; /* Green */
+      margin-right: 10px;
+      font-size: 1.4em;
+    }
+  
+    /* Call to Action */
+    .cta {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      background-color: #ff6f61; /* Coral */
+      color: #fff;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+  
+    .cta:hover {
+      background-color: #e04e40; /* Darker coral */
+    }
+  
+    .cta a {
+      display: inline-block;
+      color: #fff;
+      padding: 12px 25px;
+      text-decoration: none;
+      font-size: 1.1em;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+  
+    .cta a:hover {
+      background-color: #e04e40;
+    }
+  
+    /* Right Sidebar Styles */
+    .sidebar {
+      flex: 1;
+      margin-left: 20px;
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      transition: box-shadow 0.3s ease;
+    }
+  
+    .sidebar:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    .sidebar .profile-pic {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #005f6a; /* Dark Teal */
+    }
+  
+    .sidebar h2 {
+      text-align: center;
+      color: #005f6a;
+      margin-top: 20px;
+      font-size: 1.8em;
+      letter-spacing: 0.5px;
+    }
+  
+    .sidebar-info_more {
+      border-top: 2px solid #ddd;
+      padding-top: 20px;
+    }
+  
+    .contact-item {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      color: #333333;
+      transition: transform 0.3s ease;
+    }
+  
+    .contact-item:hover {
+      transform: scale(1.05);
+    }
+  
+    .contact-item .icon-box {
+      margin-right: 15px;
+    }
+  
+    .contact-info {
+      color: #333333;
+    }
+  
+    .contact-info p {
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+  
+    .contact-info a {
+      color: #3498db; /* Light Blue */
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+  
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+  
+    .social-list {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+  
+    .social-item {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 1.5em;
+    }
+  
+    .social-link {
+      color: #333333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+  
+    .social-link:hover {
+      color: #005f6a; /* Dark Teal */
+    }
+  
+    .separator {
+      height: 1px;
+      background-color: #ddd;
+      margin: 20px 0;
+    }
+  
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .sidebar {
+        margin-left: 0;
+        margin-top: 20px;
+      }
+  
+      .social-item {
+        font-size: 1.2em;
+      }
+  
+      .main-content {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+  
 </head>
 
-<body style="background-color: rgb(145, 145, 145);">
-  <main>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul class="navbar-list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/resume">Resume</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- #SIDEBAR -->
-    <aside class="sidebar" data-sidebar style="background-color:rgb(0, 0, 0);">
+  <!-- Main Content and Sidebar Container -->
+  <div class="container">
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="intro">
+        <h1>Welcome to Althaf Navas Portfolio</h1>
+        <p>Explore my work, experience, and skills as I continue to grow as a developer.</p>
+        <p>Feel free to connect with me or check out my projects!</p>
+      </section>
 
-      <div class="sidebar-info">
+      <!-- About Me Preview -->
+      <section class="about-preview">
+        <h2>About Me</h2>
+        <p>I'm a passionate web developer with experience in Python, Flask, and web development frameworks. I enjoy building creative solutions and exploring new technologies.</p>
+        <a href="/about">Read more about me</a>
+      </section>
 
-        <div class="avatar-box">
-          <img src="../static/images/althaf.jpg" alt="althaf navas" onclick="viewFullscreen(this.src)" width="80"
-            style="border-radius: 20px; ">
-        </div>
+      <!-- Skills Section -->
+      <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>Python (Flask, Django)</li>
+          <li>Frontend: HTML, CSS, JavaScript</li>
+          <li>Database Management: PostgreSQL, SQLite</li>
+          <li>Version Control: Git, GitHub</li>
+          <li>Web Deployment: Heroku, PythonAnywhere</li>
+        </ul>
+      </section>
 
-        <div class="info-content">
-          <h1 class="name" title="Althafnavas ">ALTHAF NAVAS</h1>
-          <p class="title">Web Developer</p>
-        </div>
+      <!-- Call to Action -->
+      <section class="cta">
+        <h2>Let's Work Together!</h2>
+        <p>If you're looking for a developer to work with on your next project, feel free to reach out!</p>
+        <a href="/contact">Contact Me</a>
+      </section>
+    </main>
 
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <ion-button id="present-alert">Show More</ion-button>
-        </button>
-
-      </div>
-
+    <!-- Right Sidebar -->
+    <aside class="sidebar">
+      <img src="../static/images/althaf.jpg" alt="Profile Picture" class="profile-pic">
+      <h2>Althaf Navas</h2>
       <div class="sidebar-info_more">
-
         <div class="separator"></div>
 
         <ul class="contacts-list">
-
           <li class="contact-item">
             <div class="icon-box">
               <img src="../static/images/EMAIL.png" alt="" width="40">
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Email</p>
               <a href="mailto:nalthaf13@gmail.com" class="contact-link">nalthaf13@gmail.com</a>
             </div>
-
           </li>
 
           <li class="contact-item">
             <div class="icon-box">
               <img src="../static/images/PHONE.png" alt="" width="40" style="background-color: white;border-radius: 10px;">
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Phone</p>
               <a href="tel:+917994844249" class="contact-link">+91 7994844249</a>
             </div>
-
           </li>
 
           <li class="contact-item">
             <div class="icon-box">
               <img src="../static/images/schedule.png" alt="" width="40">
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Birthday</p>
               <time datetime="2003-09-30">02/ MAR/ 2005</time>
             </div>
-
           </li>
-
+          
           <li class="contact-item">
             <div class="icon-box">
               <img src="../static/images/map.png" alt="" width="40">
@@ -99,316 +363,13 @@
 
           </li>
 
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://github.com/Althafnavas4" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.instagram.com/__a12_thaf__/" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://wa.me/+7994844249?text=Hello%2C%20I%20want%20to%20connect%20with%20you%21" class="social-link">
-              <ion-icon name="logo-whatsapp"></ion-icon>
-            </a>
-          </li>
-
+          <a href="https://github.com/Althafnavas4" target="_blank"> <img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub"></a>
+          <a href="https://www.instagram.com/__a12_thaf__/" target="_blank" ><img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="Instagram" ></a>
+          <a href="https://wa.me/7994844249" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/whatsapp.png" alt="WhatsApp"></a>
         </ul>
       </div>
     </aside>
-
-    <!-- #main-content -->
-    <div class="main-content">
-
-      <!-- #NAVBAR -->
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>project</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-      <!-- #ABOUT -->
-      <article class="about  active" data-page="about" style="background-color: black;">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            "I'm a committed and enthusiastic web developer with a strong focus on creating responsive, intuitive, and user-friendly websites and applications. I strive to deliver seamless digital experiences that meet both user needs and business goals."
-          </p>
-
-          <p>
-            "I have a strong passion for learning new tools and technologies, with a focus on applying a problem-solving approach to each challenge. My goal is to create innovative, user-centered solutions that adhere to the latest industry standards, ensuring quality and efficiency in every project."
-
-        </section>
-
-        <!-- ------------------------what im doing----------------------------- -->
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="../static/images/app.png" alt="design icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web Design</h4>
-
-                <p class="service-item-text">
-                  The most modern and high-quality design made at a professional level.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="../static/images/app-development.png" alt="Web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web Development</h4>
-
-                <p class="service-item-text">
-                  High-quality development of Web applications at the professional level.
-                </p>
-              </div>
-
-            </li>
-
-
-            
-
-          </ul>
-
-        </section>
-
-        <!-- testimonials modal -->
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-          </section>
-
-        </div>
-
-      </article>
-
-      <!-- #RESUME -->
-      <article class="resume" data-page="resume" style="background-color: black; height: 100%;">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <img src="../static/images/althaf.jpg" alt="education" width="40">
-            </div>
-
-            <h3 class="h3">PROFILE</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="timeline-text"> NAME : ALTHAF NAVAS <BR></BR>
-                DATE OF BIRTH : 02/03/2005 <BR></BR>
-                ADRESS :
-                PULLANTHKUDIYIL(H),
-                KARIMATTOM
-                AYAVANA P.O
-                MUVATTUPUZHA <BR></BR>
-                Phone no : 7994844249 <BR></BR>
-                EMAIL : nalthaf13@gmail.com
-                </h4>
-              <p class="timeline-text">
-              
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">EDUCATION</h4>
-              <p class="timeline-text">
-                Computer engineering diploma IN Government Polytechnic College Muttom  [Idukki, Kerala]
-              </p>
-             
-              <span>2021 — 2024</span>
-
-             
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">INTERNSHIPS</h4>
-             
-              
-
-              <p class="timeline-text">
-                PYTHON FULL STACK DEVELOPMEN IN SYNNEFO SOLUTION
-              </p>
-              <span>2024 — 2025</span>
-            </li>
-
-          </ol>
-          <div class="button-container">
-            <button class="pdf-button" onclick="openPDF()">
-              Open Resume
-            </button>
-          </div>
-
-        </section>
-
-      </article>
-
-      <!-- #PORTFOLIO -->
-      <article class="portfolio" data-page="project" style="background-color: black;">
-
-        <header>
-          <h2 class="h2 article-title">PROJECTS</h2>
-        </header>
-
-        <section class="projects">
-
-          <div class="filter-select-box">
-            <button class="filter-select" data-select>
-            </button>
-          </div>
-
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="http://althu4123.pythonanywhere.com">
-                <div class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="../static/images/EAZY.jpg" alt="HMS" loading="lazy">
-                </div>
-                <h3 class="project-title">EAZY STORE</h3>
-                <p class="project-category">EAZY SHOES</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="https://althafnavas4.github.io/Chempakam/">
-                <div class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="../static/images/chempakam.png" alt="theodinproject" loading="lazy">
-                </div><br>
-                <h3 class="project-title">Chempakam</h3>
-                <p class="project-category">Clone</p>
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-      <!-- #CONTACT -->
-      <article class="contact" data-page="contact" style="background-color: black;">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header><br><br><br><br>
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Let's get in touch</h3>
-
-          <form action="#" class="form" data-form method="post">
-
-            <div class="input-wrapper">
-              <input type="text" name="name" class="form-input" placeholder="Full name" required>
-              <input type="email" name="email" class="form-input" placeholder="Email address" required>
-            </div>
-
-            <input type="text" name="number" class="form-input" placeholder="Phone" required><br>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required></textarea>
-
-            <button class="form-btn" type="submit">
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article>
-
-    </div>
-
-  </main>
-
-  <div id="fullscreen-image" onclick="closeFullscreen()">
-    <span>&times;</span>
-    <img src="../static/images/my_img.png" alt="Fullscreen View">
   </div>
-
-  <!-- custom js link -->
-  <script src="../static/js/script.js"></script>
-
-  <!-- ionicon link -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </body>
 
 </html>
-
-
-
-
-<!-- a -->

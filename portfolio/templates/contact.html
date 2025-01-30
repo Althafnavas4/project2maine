@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <style>
+    /* General Page Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    @media (max-width: 768px) {
+      .navbar-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #005f6a;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .navbar-list li {
+        margin: 10px 0;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .show-menu {
+        display: flex;
+      }
+    }
+    /* Navbar Styles */
+    nav.navbar {
+      background-color: #005f6a;
+      padding: 15px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav.navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav.navbar ul li {
+      margin: 0 15px;
+    }
+
+    nav.navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav.navbar ul li a:hover {
+      background-color: #e67e22;
+    }
+
+    /* Header */
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      margin-top: 60px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background-color: #ffffff;
+      padding: 50px 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-section h2 {
+      font-size: 2.2em;
+      color: #34495e;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #005f6a;
+      border-radius: 8px;
+      color: white;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      color: #34495e;
+    }
+
+    .form-input:focus {
+      border: 2px solid #e67e22;
+      outline: none;
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-btn {
+      background-color: #e67e22;
+      color: white;
+      font-size: 1.2em;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-btn:hover {
+      background-color: #d35400;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav.navbar ul {
+        flex-direction: column;
+      }
+
+      nav.navbar ul li {
+        margin: 10px 0;
+      }
+
+      .contact-section {
+        width: 95%;
+        padding: 30px 15px;
+      }
+
+      .form-input {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/resume">Resume</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h2>Contact</h2>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2>Let's Get in Touch</h2>
+
+    <div class="contact-form">
+      <form action="#" method="post">
+        <input type="text" name="name" class="form-input" placeholder="Full name" required>
+        <input type="email" name="email" class="form-input" placeholder="Email address" required>
+        <textarea name="message" class="form-input" placeholder="Your Message" required></textarea>
+        <button class="form-btn" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+</body>
+
+</html>

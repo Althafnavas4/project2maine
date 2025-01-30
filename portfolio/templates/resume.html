@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Althaf Navas Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons.css" rel="stylesheet"> <!-- Add this link for icons -->
+  <style>
+    /* General Page Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #34495e;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #005f6a;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(138, 134, 134, 0.1);
+    }
+
+    .navbar-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar-list li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    .navbar-list a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      padding: 8px 15px;
+      border-radius: 4px;
+    }
+
+    .navbar-list a:hover {
+      color: #005f6a;
+      background-color: rgba(243, 156, 18, 0.1);
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .h2.article-title {
+      font-size: 3em;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    /* Timeline Section */
+    .timeline {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .icon-box img {
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 20px;
+      border: 4px solid #005f6a;
+    }
+
+    .h3 {
+      font-size: 2.5em;
+      color: #2c3e50;
+      margin: 0;
+    }
+
+    .timeline-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .timeline-item {
+      margin-bottom: 40px;
+      padding-left: 60px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 30px;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background-color: #005f6a;
+    }
+
+    .timeline-item h4 {
+      font-size: 1.6em;
+      color: #34495e;
+      margin-bottom: 10px;
+    }
+
+    .timeline-text {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #7f8c8d;
+    }
+
+    .timeline-item span {
+      display: block;
+      color: #95a5a6;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    /* Button Styles */
+    .button-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .pdf-button {
+      background-color: #005f6a;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .pdf-button:hover {
+      background-color: #e67e22;
+    }
+
+    /* Link Back to Home */
+    /* a {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #2c3e50;
+      text-decoration: none;
+      background-color: #000000;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    } */
+
+    a:hover {
+      background-color: #bdc3c7;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .navbar-list {
+        flex-direction: column;
+      }
+
+      .timeline-item {
+        padding-left: 30px;
+      }
+
+      .timeline-item::before {
+        left: 15px;
+      }
+
+      .button-container {
+        margin-top: 20px;
+      }
+
+      .pdf-button {
+        padding: 12px 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul class="navbar-list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/resume">Resume</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h2 class="h2 article-title">Resume</h2>
+  </header>
+
+  <!-- Timeline Section -->
+  <section class="timeline">
+    <div class="title-wrapper">
+      <div class="icon-box">
+        <img src="../static/images/althaf.jpg" alt="education">
+      </div>
+      <h3 class="h3">PROFILE</h3>
+    </div>
+
+    <ol class="timeline-list">
+      <li class="timeline-item">
+        <h4 class="timeline-text">
+          NAME: ALTHAF NAVAS <br><br>
+          DATE OF BIRTH: 02/03/2005 <br><br>
+          ADDRESS: PULLANTHKUDIYIL(H), KARIMATTOM, AYAVANA P.O, MUVATTUPUZHA <br><br>
+          PHONE NO: 7994844249 <br><br>
+          EMAIL: nalthaf13@gmail.com
+        </h4>
+      </li>
+
+      <li class="timeline-item">
+        <h4 class="h4 timeline-item-title">EDUCATION</h4>
+        <p class="timeline-text">
+          Computer engineering diploma in Government Polytechnic College Muttom (Idukki, Kerala)
+        </p>
+        <span>2021 — 2024</span>
+      </li>
+
+      <li class="timeline-item">
+        <h4 class="h4 timeline-item-title">INTERNSHIPS</h4>
+        <p class="timeline-text">
+          Python Full Stack Development at Synnefo Solution
+        </p>
+        <span>2024 — 2025</span>
+      </li>
+    </ol>
+
+    <div class="button-container">
+      <button class="pdf-button" onclick="openPDF()">Open Resume</button>
+    </div>
+  </section>
+
+  <!-- Link back to home -->
+  <a href="/">Back to Home</a>
+
+  <script>
+    function openPDF() {
+      window.open('/static/images/althafcv.pdf', '_blank');
+    }
+  </script>
+</body>
+
+</html>

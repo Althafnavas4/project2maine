@@ -113,3 +113,42 @@ function closeFullscreen() {
   const fullscreenDiv = document.getElementById('fullscreen-image');
   fullscreenDiv.style.display = 'none';
 }
+
+// Example for opening and closing the sidebar
+document.querySelector('.sidebar-toggle').addEventListener('click', () => {
+  document.querySelector('.sidebar').classList.toggle('active');
+});
+
+
+
+// Function to change sections based on navigation
+function changePage(page) {
+  // Hide all sections
+  const sections = document.querySelectorAll('article');
+  sections.forEach(section => {
+    section.classList.remove('active');
+  });
+
+  // Remove active class from all navbar links
+  const navbarLinks = document.querySelectorAll('.navbar-link');
+  navbarLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+
+  // Show the selected section
+  const activeSection = document.getElementById(page);
+  if (activeSection) {
+    activeSection.classList.add('active');
+  }
+
+  // Highlight the active nav link
+  const activeLink = document.querySelector(`[onclick="changePage('${page}')"]`);
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
+}
+
+// Set default page to About on initial load
+document.addEventListener('DOMContentLoaded', () => {
+  changePage('about');
+});

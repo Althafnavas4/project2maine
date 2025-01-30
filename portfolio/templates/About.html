@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000;
+            color: #f1f1f1;
+            line-height: 1.6;
+        }
+
+        h2, h3, h4 {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        /* About Section Styles */
+        .about {
+            background-color: #005f6a;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+        }
+
+        .article-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .about-text {
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        /* Service Section Styles */
+        .service {
+            margin-top: 40px;
+        }
+
+        .service-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #ddd;
+        }
+
+        .service-list {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .service-item {
+            background-color: #333;
+            padding: 20px;
+            width: 22%;
+            border-radius: 10px;
+            text-align: center;
+            color: #f1f1f1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon-box img {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+
+        .service-item-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .service-item-text {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #ccc;
+        }
+
+        /* Back to Home Link */
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.3em;
+            text-decoration: none;
+            color: #f1f1f1;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #FFD700;
+        }
+
+    </style>
+
+  <!-- Full About Me Article Section -->
+  <article class="about active" data-page="about">
+    <header>
+      <h2 class="article-title">About Me</h2>
+    </header>
+
+    <section class="about-text">
+      <p>
+        "I'm a committed and enthusiastic web developer with a strong focus on creating responsive, intuitive, and user-friendly websites and applications. I strive to deliver seamless digital experiences that meet both user needs and business goals."
+      </p>
+
+      <p>
+        "I have a strong passion for learning new tools and technologies, with a focus on applying a problem-solving approach to each challenge. My goal is to create innovative, user-centered solutions that adhere to the latest industry standards, ensuring quality and efficiency in every project."
+      </p>
+    </section>
+
+    <!-- Service Section -->
+    <section class="service">
+      <h3 class="service-title">What I'm Doing</h3>
+
+      <ul class="service-list">
+        <li class="service-item">
+          <div class="service-icon-box">
+            <img src="../static/images/app.png" alt="design icon">
+          </div>
+          <div class="service-content-box">
+            <h4 class="service-item-title">Web Design</h4>
+            <p class="service-item-text">
+              Modern, high-quality design made at a professional level.
+            </p>
+          </div>
+        </li>
+
+        <li class="service-item">
+          <div class="service-icon-box">
+            <img src="../static/images/app-development.png" alt="Web development icon">
+          </div>
+          <div class="service-content-box">
+            <h4 class="service-item-title">Web Development</h4>
+            <p class="service-item-text">
+              High-quality development of web applications at a professional level.
+            </p>
+          </div>
+        </li>
+
+        
+
+        
+      </ul>
+    </section>
+  </article>
+
+  <!-- Back to Home Link -->
+  <a href="/">Back to Home</a>
+
+</body>
+
+</html>
