@@ -10,123 +10,173 @@
 </head>
 
 <body>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #000000;
-            color: #f1f1f1;
-            line-height: 1.6;
-        }
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #000000; /* Black background */
+        color: #f1f1f1; /* Light text color */
+        line-height: 1.6;
+    }
 
-        h2, h3, h4 {
-            font-family: 'Arial', sans-serif;
-            color: #fff;
-        }
+    h2, h3, h4 {
+        font-family: 'Arial', sans-serif;
+        color: #FFD700; /* Gold color */
+    }
 
-        /* About Section Styles */
+    /* About Section Styles */
+    .about {
+        background-color: #333333; /* Dark gray background for the about section */
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        margin: 40px 0;
+    }
+
+    .article-title {
+        font-size: 2.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #FFD700; /* Gold */
+    }
+
+    .about-text {
+        margin-top: 30px;
+        font-size: 1.2em;
+    }
+
+    .about-text p {
+        margin-bottom: 20px;
+        color: #ddd; /* Light gray */
+    }
+
+    /* Service Section Styles */
+    .service {
+        margin-top: 40px;
+    }
+
+    .service-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        color: #FFD700; /* Gold */
+    }
+
+    .service-list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .service-item {
+        background-color: #222222; /* Dark gray for service items */
+        padding: 20px;
+        width: 22%;
+        border-radius: 10px;
+        text-align: center;
+        color: #f1f1f1; /* Light text color */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .service-icon-box img {
+        width: 50px;
+        margin-bottom: 10px;
+    }
+
+    .service-item-title {
+        font-size: 1.6em;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #FFD700; /* Gold for titles */
+    }
+
+    .service-item-text {
+        font-size: 1.1em;
+        margin-top: 10px;
+        color: #ccc; /* Light gray */
+    }
+
+    /* Back to Home Link */
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 40px;
+        font-size: 1.3em;
+        text-decoration: none;
+        color: #FFD700; /* Gold color for the link */
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #f1f1f1; /* Light color on hover */
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
         .about {
-            background-color: #005f6a;
-            padding: 40px 20px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 40px 0;
+            padding: 20px;
         }
 
         .article-title {
-            font-size: 2.5em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 2em;
         }
 
         .about-text {
-            margin-top: 30px;
-            font-size: 1.2em;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: #ddd;
-        }
-
-        /* Service Section Styles */
-        .service {
-            margin-top: 40px;
+            font-size: 1em;
         }
 
         .service-title {
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            color: #ddd;
+            font-size: 1.5em;
         }
 
         .service-list {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 0 20px;
+            flex-direction: column;
+            align-items: center;
         }
 
         .service-item {
-            background-color: #333;
-            padding: 20px;
-            width: 22%;
-            border-radius: 10px;
-            text-align: center;
-            color: #f1f1f1;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 80%; /* Increase width on smaller screens */
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .article-title {
+            font-size: 1.8em;
         }
 
-        .service-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-icon-box img {
-            width: 50px;
-            margin-bottom: 10px;
-        }
-
-        .service-item-title {
-            font-size: 1.6em;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .service-item-text {
-            font-size: 1.1em;
-            margin-top: 10px;
-            color: #ccc;
-        }
-
-        /* Back to Home Link */
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 40px;
+        .service-title {
             font-size: 1.3em;
-            text-decoration: none;
-            color: #f1f1f1;
-            font-weight: bold;
-            text-transform: uppercase;
         }
 
-        a:hover {
-            text-decoration: underline;
-            color: #FFD700;
+        .service-item {
+            width: 100%; /* Make each item take full width on very small screens */
+            padding: 15px;
         }
 
-    </style>
+        a {
+            font-size: 1.1em;
+        }
+    }
+</style>
+
 
   <!-- Full About Me Article Section -->
   <article class="about active" data-page="about">
@@ -172,10 +222,6 @@
             </p>
           </div>
         </li>
-
-        
-
-        
       </ul>
     </section>
   </article>

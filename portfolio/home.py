@@ -71,10 +71,13 @@ def contact():
 
     return render_template('contact.html')
 
+@app.route('/About')
+def About():
+    return render_template('About.html')
 # Thank you page
-@app.route('/thank_you')
+@app.route("/thank_you")
 def thank_you():
-    return "Thank you for your message!"
+    return render_template("thank_you.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

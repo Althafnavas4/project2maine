@@ -7,112 +7,120 @@
     <title>Projects</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <style>
-      /* Navbar Styles */
-      nav.navbar {
-        background-color: #005f6a;
-        padding: 15px;
-        text-align: center;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-      }
-
-      nav.navbar ul.navbar-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-      }
-
-      nav.navbar ul.navbar-list li {
-        margin: 0 20px;
-      }
-
-      nav.navbar ul.navbar-list li a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.2em;
-        padding: 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-      }
-
-      nav.navbar ul.navbar-list li a:hover {
-        background-color: #e67e22;
-        color: white;
-      }
-
       /* General Page Styles */
       body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f7f7f7;
-        padding-top: 70px; /* Adjust padding to prevent overlap with fixed navbar */
+        background-color: #0a0a0a;
+        color: #f1c40f;
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background-color: #1a1a1a;
+        color: #f1c40f;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .navbar-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .navbar-list li {
+        margin: 0 20px;
+      }
+
+      .navbar-list a {
+        color: #f1c40f;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .navbar-list a:hover {
+        background-color: #f1c40f;
+        color: #0a0a0a;
+      }
+
+      /* Hamburger Icon */
+      .hamburger {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        left: 20px;
       }
 
       /* Header Styles */
       header {
-        background-color: #34495e;
-        color: white;
-        padding: 30px 20px;
+        color: #f1c40f;
+        padding: 40px;
         text-align: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 40px;
-        border-radius: 8px;
       }
 
-      .h2.article-title {
-        font-size: 2.8em;
-        margin: 0;
+      .header-title {
         letter-spacing: 1px;
-        color: black;
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 1.5rem;
       }
 
       /* Projects Section */
       .projects {
         max-width: 1200px;
-        margin: 30px auto;
-        padding: 40px;
-        background-color: #2c3e50;
-        border-radius: 10px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        margin: 20px auto;
+        padding: 50px 20px;
+        background-color: #1c1c1c;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        width: 90%;
       }
 
-      .filter-select-box {
+      .projects h2 {
         text-align: center;
-        margin-bottom: 30px;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: #f1c40f;
       }
 
       .project-list {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 30px;
-        justify-content: center;
-        list-style: none;
+        list-style-type: none;
         padding: 0;
       }
 
+      /* Project Item Styles */
       .project-item {
-        background-color: #ecf0f1;
+        background-color: #333;
         border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         overflow: hidden;
-        width: 300px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
       }
 
       .project-item:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transform: translateY(-10px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
       }
 
       .project-img {
-        position: relative;
-        height: 200px;
         width: 100%;
+        height: 200px;
         overflow: hidden;
       }
 
@@ -127,38 +135,102 @@
         transform: scale(1.1);
       }
 
+      .project-item a {
+        text-decoration: none;
+        color: #f1c40f;
+      }
+
       .project-item-icon-box {
         position: absolute;
         top: 10px;
         right: 10px;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.5);
         padding: 8px;
         border-radius: 50%;
-      }
-
-      .project-item a {
-        text-decoration: none;
-        color: #34495e;
+        color: #f1c40f;
+        font-size: 1.5rem;
       }
 
       .project-title {
-        font-size: 1.8em;
-        margin: 15px;
-        font-weight: bold;
-        color: #34495e;
+        padding: 15px;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #f1c40f;
+        transition: color 0.3s ease;
+      }
+
+      .project-title:hover {
+        color: #e67e22;
       }
 
       .project-category {
-        font-size: 1.3em;
-        margin-bottom: 20px;
-        color: #95a5a6;
+        padding: 0 15px 15px;
+        font-size: 1.2rem;
+        color: #7f8c8d;
         font-style: italic;
+      }
+
+      /* Footer Styles */
+      footer {
+        text-align: center;
+        background-color: #333;
+        color: #f1c40f;
+        padding: 20px;
+        font-size: 1rem;
+      }
+
+      footer a {
+        color: #f1c40f;
+        text-decoration: none;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .projects {
+          padding: 20px;
+        }
+
+        .project-list {
+          grid-template-columns: 1fr;
+        }
+
+        nav.navbar ul {
+          flex-direction: column;
+          display: none;
+          width: 100%;
+        }
+
+        nav.navbar ul.active {
+          display: block;
+        }
+
+        nav.navbar ul li {
+          margin: 10px 0;
+          text-align: center;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .header-title {
+          font-size: 2rem;
+        }
+
+        .projects h2 {
+          font-size: 2rem;
+        }
+
+        .project-title {
+          font-size: 1.5rem;
+        }
       }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar">
+      <span class="hamburger" onclick="toggleMenu()">&#9776;</span>
       <ul class="navbar-list">
         <li><a href="/">Home</a></li>
         <li><a href="/resume">Resume</a></li>
@@ -169,16 +241,14 @@
 
     <!-- Header -->
     <header>
-      <h2 class="h2 article-title">PROJECTS</h2>
+      <h2 class="header-title">My Projects</h2>
     </header>
 
     <!-- Projects Section -->
     <section class="projects">
-      <div class="filter-select-box">
-        
-      </div>
+      <h2>Featured Projects</h2>
       <ul class="project-list">
-        <li class="project-item active" data-filter-item data-category="web development">
+        <li class="project-item">
           <a href="http://althu4123.pythonanywhere.com">
             <div class="project-img">
               <div class="project-item-icon-box">
@@ -186,23 +256,33 @@
               </div>
               <img src="../static/images/EAZY.jpg" alt="Eazy Store" loading="lazy">
             </div>
-            <h3 class="project-title">EAZY STORE</h3>
-            <p class="project-category">EAZY SHOES</p>
+            <h3 class="project-title">Eazy Store</h3>
+            <p class="project-category">E-Commerce Platform</p>
           </a>
         </li>
-        <li class="project-item active" data-filter-item data-category="web development">
+        <li class="project-item">
           <a href="https://althafnavas4.github.io/Chempakam/">
             <div class="project-img">
               <div class="project-item-icon-box">
                 <ion-icon name="eye-outline"></ion-icon>
               </div>
               <img src="../static/images/chempakam.png" alt="Chempakam" loading="lazy">
-            </div><br>
+            </div>
             <h3 class="project-title">Chempakam</h3>
-            <p class="project-category">Clone</p>
+            <p class="project-category">Clone Project</p>
           </a>
         </li>
       </ul>
     </section>
+
+    <!-- Footer -->
+    
+
+    <script>
+      function toggleMenu() {
+        const navbarList = document.querySelector('.navbar-list');
+        navbarList.classList.toggle('active');
+      }
+    </script>
   </body>
 </html>
